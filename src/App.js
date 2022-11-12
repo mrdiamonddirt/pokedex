@@ -86,7 +86,7 @@ function App() {
         {/* input type range  with value from 0 to 905*/}
         <input type="range" min="0" max="905" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
         </Screen>
-        <input type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
+        <Pokenum type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></Pokenum>
       </Section>
       <Section>
         <h1>Pokemon Info</h1>
@@ -112,6 +112,14 @@ function App() {
     </>
   );
 }
+
+const Pokenum = styled.input`
+background-color: green;
+height: 40px;
+width: 60px;
+margin-top: 15px;
+transform: translate(-15px);
+`
 
 const Screen = styled.div`
   display: flex;
@@ -203,7 +211,7 @@ const Dexbtn = styled.button`
   background: blue;
   width: 40px;
   height: 40px;
-  margin: 5px;
+  margin: 0;
   border: 1px solid black;
 padding: 0;
 `;
