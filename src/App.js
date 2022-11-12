@@ -35,7 +35,7 @@ function App() {
     setpokecardurl(data.data[0].images.large);
     // setPokemoncardImg(data.data[0].images.small);
   }
-  getPokemoncardImg(pokemonname);
+  
 
   // useeffect for pokemon api call here
 
@@ -73,10 +73,11 @@ console.log(`Pokemon URL ${pokeurl}`)
         <input type='number' id='pokenum' placeholder='Pokenumber' value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
         <button style={{display:'inline', background: 'blue',width:'40px', height:'40px'}} onClick={() => setpokemonnum(pokemonnum + 1)}>+</button> 
         <button style={{display:'inline', background: 'blue',width:'40px', height:'40px'}} onClick={() => setpokemonnum(pokemonnum - 1)}>-</button>
+        <button style={{display:'inline', background: 'blue',width:'40px', height:'40px'}} onClick={() => getPokemoncardImg(pokemonname)}> Get Card</button>
       </Section>
       <Section>
         <h1>Pokemon Info</h1>
-        <img style={{height: '200px'}}src={pokecardurl}></img>
+        <PokemonCard src={pokecardurl}></PokemonCard>
         <p>{pokemonname}</p>
       </Section>
       
@@ -84,5 +85,9 @@ console.log(`Pokemon URL ${pokeurl}`)
   );
 }
 
+const PokemonCard = styled.img`
+  height: 200px;
+  border-radius: 5px;
+`
 
 export default App;
