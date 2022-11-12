@@ -77,26 +77,20 @@ function App() {
     <>
     <div className="App">
       <Section>
-        <h1>Pokemon</h1>
+        {/* <h1>Pokemon</h1> */}
+        <Indicator className="indicator"></Indicator>
+        <Screen> 
         <PokeIMG>
           <img src={imgUrl} alt="pokeimg"></img>
         </PokeIMG>
         {/* input type range  with value from 0 to 905*/}
-        <input
-          type="range"
-          min="0"
-          max="905"
-          value={pokemonnum}
-          onChange={(e) => setpokemonnum(e.target.value)}
-        ></input>
-
-        <input
-          type="number"
-          id="pokenum"
-          placeholder="Pokenumber"
-          value={pokemonnum}
-          onChange={(e) => setpokemonnum(e.target.value)}
-        ></input>
+        <input type="range" min="0" max="905" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
+        </Screen>
+        <input type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
+      </Section>
+      <Section>
+        <h1>Pokemon Info</h1>
+        <PokemonName>{pokemonname}</PokemonName>
         <div className="divbtnclass">
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 100)} >+100</Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 10)} >+10</Dexbtn>
@@ -109,11 +103,7 @@ function App() {
         <Dexbtn onClick={() => setpokemonnum(Math.floor(Math.random() * 905))}>Rdmn Poké</Dexbtn>
         <Dexbtn onClick={() => getPokemoncardImg(pokemonname)}>Get Card</Dexbtn>
         </div>
-      </Section>
-      <Section>
-        <h1>Pokemon Info</h1>
         <PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard>
-        <PokemonName>{pokemonname}</PokemonName>
       </Section>
     </div>
     <CardSection id="card" onClick={() => hidecard()}>
@@ -122,6 +112,16 @@ function App() {
     </>
   );
 }
+
+const Screen = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 2px 2px 2px 15px;
+  padding-bottom: 10px;
+`
 
 
 const CardSection = styled.div`
@@ -170,6 +170,17 @@ const Card = styled.img`
     transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
   }
 }
+`
+
+const Indicator = styled.div`
+background-color: blue;
+height: 50px;
+width: 50px;
+border-radius: 50%;
+position: absolute;
+top: 5%;
+left: 5%;
+border: 10px solid white;
 `
 const Section = styled.div`
   background-color: red;
