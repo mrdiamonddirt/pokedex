@@ -67,6 +67,12 @@ function App() {
     
   }
 
+  function hidecard() {
+    console.log('hide card');
+    document.getElementById("card").style.display = "none";
+  }
+
+  
   return (
     <>
     <div className="App">
@@ -92,12 +98,16 @@ function App() {
           onChange={(e) => setpokemonnum(e.target.value)}
         ></input>
         <div className="divbtnclass">
-        <Dexbtn onClick={() => setpokemonnum(pokemonnum + 1)}>+</Dexbtn>
-        <Dexbtn onClick={() => setpokemonnum(pokemonnum - 1)}>-</Dexbtn>
+        <Dexbtn onClick={() => setpokemonnum(pokemonnum + 100)} >+100</Dexbtn>
+        <Dexbtn onClick={() => setpokemonnum(pokemonnum + 10)} >+10</Dexbtn>
+        <Dexbtn onClick={() => setpokemonnum(pokemonnum + 1)}>+1</Dexbtn>
+        <Dexbtn onClick={() => setpokemonnum(pokemonnum - 1)}>-1</Dexbtn>
+        <Dexbtn onClick={() => setpokemonnum(pokemonnum - 10)} >-10</Dexbtn>
+        <Dexbtn onClick={() => setpokemonnum(pokemonnum - 100)} >-100</Dexbtn>
+        </div>
+        <div className="divbtnclass2">
+        <Dexbtn onClick={() => setpokemonnum(Math.floor(Math.random() * 905))}>Rdmn Poké</Dexbtn>
         <Dexbtn onClick={() => getPokemoncardImg(pokemonname)}>Get Card</Dexbtn>
-        <Dexbtn></Dexbtn>
-        <Dexbtn></Dexbtn>
-        <Dexbtn></Dexbtn>
         </div>
       </Section>
       <Section>
@@ -106,7 +116,7 @@ function App() {
         <PokemonName>{pokemonname}</PokemonName>
       </Section>
     </div>
-    <CardSection id="card">
+    <CardSection id="card" onClick={() => hidecard()}>
         <Card className="card" src={pokecardurl} alt="pokemon card"></Card>
     </CardSection>
     </>
@@ -121,12 +131,45 @@ align-items: center;
 `
 
 const Card = styled.img`
-top: 0;
-display: flex;
-justify-content: center;
-align-items: center;
-position: fixed;
-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  perspective: 200px;
+  top: 0;
+  height: 500px;
+  position: absolute;
+  z-index: 1;
+  transform: translate3d(0.1px, 0.1px, 0.1px ); 
+&:hover {
+  animation-name: 'holoCard';
+  border-radius: 15px;
+  box-shadow: 
+    -20px -20px 30px -25px var(--color1), 
+    20px 20px 30px -25px var(--color2), 
+    -7px -7px 10px -5px var(--color1), 
+    7px 7px 10px -5px var(--color2), 
+    0 0 13px 4px rgba(255,255,255,0.3),
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes holoCard {
+  0%, 100% {
+    transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+  }
+  5%, 8% {
+    transform: rotateZ(0deg) rotateX(6deg) rotateY(-20deg);
+  }
+  13%, 16% {
+    transform: rotateZ(0deg) rotateX(-9deg) rotateY(32deg);
+  }
+  35%, 38% {
+    transform: rotateZ(3deg) rotateX(12deg) rotateY(20deg);
+  }
+  55% {
+    transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
+  }
+}
 `
 const Section = styled.div`
   background-color: red;

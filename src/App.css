@@ -1,8 +1,14 @@
+:root {
+  --color1: rgb(0, 231, 255);
+  --color2: rgb(255, 0, 231);
+  --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
+}
+
+
 @font-face {
   font-family: 'Pokemon Solid', sans-serif;;
   src: url('https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573');
 }
-
 
 .App {
   display: flex;
@@ -10,9 +16,11 @@
   font-family: 'Pokemon Solid';
 }
 
-.divbtnclass{
+
+.divbtnclass, .divbtnclass2{
 display: flex ;
 justify-content: center;
 align-items: center;
 
 }
+
