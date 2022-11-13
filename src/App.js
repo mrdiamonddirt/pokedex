@@ -118,7 +118,12 @@ function App() {
         <Pokenum type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></Pokenum>
       </Section>
       <Section>
+        <TopDisplay id="topdisplay2">
         <PokemonName>{pokemonname}</PokemonName>
+        <div id='sprites'>
+        <img style={{height:'40px'}} src={spriteUrl}></img><img style={{height:'40px'}} src={latestgamesprite}></img><img style={{height:'40px'}} src={sprite1}></img>
+        </div>
+        </TopDisplay>
         <div className="divbtnclass">
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 100)} >+100</Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 10)} >+10</Dexbtn>
@@ -142,9 +147,6 @@ function App() {
         <div id='infodisplays'>
         <Info style={{height:'80px'}}><img src={frontanimsprite}></img></Info><Info><img src={officialartwork} alt="pokeimg"></img></Info>
         </div>
-        <div id='sprites'>
-        <img style={{height:'40px'}} src={spriteUrl}></img><img style={{height:'40px'}} src={latestgamesprite}></img><img style={{height:'40px'}} src={sprite1}></img>
-        </div>
       </Section>
     </div>
     <CardSection id="card" onClick={() => hidecard()}>
@@ -153,6 +155,15 @@ function App() {
     </>
   );
 }
+
+const TopDisplay = styled.div`
+background-color: rgba(0, 0, 0, 1);
+border: 1px solid black;
+border-radius: 5px;
+margin-bottom: 5px;
+padding-bottom: 5px;
+/* height: ; */
+`
 
 const Info = styled.div`
 display: flex;
@@ -249,6 +260,7 @@ const PokemonName = styled.p`
   height: 50px;
   border: 1px solid black;
   border-radius: 10px;
+  margin: 2px;
   color: white;
   text-transform: uppercase;
 `;
