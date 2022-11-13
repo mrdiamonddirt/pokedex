@@ -199,8 +199,8 @@ background-color: #9a905d;
     height: 80vh;
   }
   .screen{
-    transform: translate(0px, -50px);
-    scale: 1.2;
+    transform: translate(0px, 0px);
+    scale: 1;
   }
   #pokenum{
     /* transform: translate(0px, 50px); */
@@ -208,14 +208,14 @@ background-color: #9a905d;
     font-size: 25px;
   }
   #topdisplay2{
-    transform: translate(0px, -50px);
-    scale: 1.2;
+    /* transform: translate(0px, -50px); */
+    /* scale: 1; */
     font-size: 2em;
   }
   .divbtnclass, .divbtnclass2, .extrabtns, .card, .infodisplays{
-    transform: translate(0px, px);
-    margin-bottom: 25px;
-    scale: 1.2;
+    /* transform: translate(0px, px); */
+    /* margin-bottom: 25px; */
+    /* scale: 1.2; */
     font-size: 2em;
   }
     
