@@ -107,24 +107,3 @@ input[type="range"]::-ms-fill-upper {
 background-color: #9a905d;
 }
 
-/* media query for iphone */
-@media only screen and (max-width: 600px) {
-  .App {
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 5%;
-  }
-  .indicator{
-   scale: .8;
-    display: flex;
-    transform: translate(-120px, -25px);
-  }
-  .toplights{
-    transform: translate(15px, -30px);
-    scale: 0.8;
-  }
-  .divbtnclass, .divbtnclass2, .extrabtns{
-    scale: 0.8;
-  }
-}

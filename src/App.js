@@ -84,7 +84,7 @@ function App() {
         <Lights style={{backgroundColor: 'yellow'}}></Lights>
         <Lights style={{backgroundColor: 'green'}}></Lights>
         </div>
-        <Screen> 
+        <Screen className="screen"> 
         <PokeIMG>
           <img src={imgUrl} alt="pokeimg"></img>
         </PokeIMG>
