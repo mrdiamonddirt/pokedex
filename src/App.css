@@ -4,23 +4,47 @@
   --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
 }
 
+body{
+  background-color: grey;
+}
 
 @font-face {
   font-family: 'Pokemon Solid', sans-serif;;
   src: url('https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573');
 }
 
+.extrabtns{
+  display: flex;
+  padding-top: 25px;
+  transform: translate(-55px);
+
+  margin: 0 10px;
+
+}
 .App {
   display: flex;
   text-align: center;
   font-family: 'Pokemon Solid';
+  margin-top: 2%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 5%;
 }
-
+.toplights{
+  display: flex;
+  justify-items: space-between;
+  align-items: center;
+  position: fixed;
+  top: 10%;
+}
 
 .divbtnclass, .divbtnclass2{
 display: flex ;
 justify-content: center;
 align-items: center;
+}
+.card{
+  border-radius: 5px;
 }
 
 @keyframes holoCard {
@@ -39,4 +63,46 @@ align-items: center;
   55% {
     transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
   }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='range'] {
+    overflow: hidden;
+    margin-left: 15px;
+    width: 150px;
+    -webkit-appearance: none;
+    background-color: #ffffff;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #13bba4;
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: #ff0101;
+    border-radius: 5px;
+    box-shadow: -80px 0 0 80px #43e5f7;
+  }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+background-color: #43e5f7; 
+}
+input[type="range"]::-moz-range-track {  
+background-color: #9a905d;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+background-color: #43e5f7; 
+}
+input[type="range"]::-ms-fill-upper {  
+background-color: #9a905d;
 }

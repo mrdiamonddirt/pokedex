@@ -79,6 +79,11 @@ function App() {
       <Section>
         {/* <h1>Pokemon</h1> */}
         <Indicator className="indicator"></Indicator>
+        <div className="toplights">
+        <Lights style={{backgroundColor: 'red'}}></Lights>
+        <Lights style={{backgroundColor: 'yellow'}}></Lights>
+        <Lights style={{backgroundColor: 'green'}}></Lights>
+        </div>
         <Screen> 
         <PokeIMG>
           <img src={imgUrl} alt="pokeimg"></img>
@@ -89,7 +94,6 @@ function App() {
         <Pokenum type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></Pokenum>
       </Section>
       <Section>
-        <h1>Pokemon Info</h1>
         <PokemonName>{pokemonname}</PokemonName>
         <div className="divbtnclass">
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 100)} >+100</Dexbtn>
@@ -100,8 +104,16 @@ function App() {
         <Dexbtn onClick={() => setpokemonnum(pokemonnum - 100)} >-100</Dexbtn>
         </div>
         <div className="divbtnclass2">
+        <Dexbtn></Dexbtn>
+        <Dexbtn></Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(Math.floor(Math.random() * 905))}>Rdmn Poké</Dexbtn>
         <Dexbtn onClick={() => getPokemoncardImg(pokemonname)}>Get Card</Dexbtn>
+        <Dexbtn></Dexbtn>
+        <Dexbtn></Dexbtn>
+        </div>
+        <div className="extrabtns">
+        <Dexbtn style={{backgroundColor: 'white'}}></Dexbtn>
+        <Dexbtn style={{backgroundColor: 'white'}}></Dexbtn>
         </div>
         <PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard>
       </Section>
@@ -112,6 +124,15 @@ function App() {
     </>
   );
 }
+
+const Lights = styled.div`
+height: 10px;
+width: 10px;
+margin: 2px;
+border-radius: 50%;
+border: 2px solid black;
+transform: translate(-50px);
+`;
 
 const Pokenum = styled.input`
 background-color: green;
@@ -124,13 +145,10 @@ transform: translate(-15px);
 const Screen = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: #f5f5f5;
-  border-radius: 2px 2px 2px 15px;
-  padding-bottom: 10px;
+  border-radius: 5px 5px 5px 25px;
+  padding-bottom: 15px;
 `
-
 
 const CardSection = styled.div`
 display: none;
@@ -151,7 +169,7 @@ const Card = styled.img`
   transform: translate3d(0.1px, 0.1px, 0.1px ); 
 &:hover {
   animation-name: 'holoCard';
-  border-radius: 15px;
+  border-radius: 5px;
   box-shadow: 
     -20px -20px 30px -25px var(--color1), 
     20px 20px 30px -25px var(--color2), 
@@ -181,29 +199,36 @@ const Card = styled.img`
 `
 
 const Indicator = styled.div`
-background-color: blue;
+background: radial-gradient(rgba(36, 17, 187, 1), rgba(97, 87, 233, 1));
 height: 50px;
 width: 50px;
 border-radius: 50%;
 position: absolute;
 top: 5%;
-left: 5%;
-border: 10px solid white;
+left: 20%;
+border: 5px solid white;
+margin-top: 2%;
+margin-left: 2%;
 `
 const Section = styled.div`
   background-color: red;
-  height: 100vh;
-  width: 50%;
+  height: 80vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
 `;
 
 const PokeIMG = styled.div`
-  background-color: azure;
+  display: block;
+  padding-top: 5px;
+  background-color: black;
+  margin: 20px;
   height: 100px;
-  width: 100px;
+  width: 150px;
 `;
 
 const Dexbtn = styled.button`
@@ -221,16 +246,18 @@ const PokemonName = styled.p`
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  background-color: grey;
+  background-color: rgba(39, 39, 39, 1);
   width: 200px;
   height: 50px;
   border: 1px solid black;
   border-radius: 10px;
-  color: blue;
+  color: white;
+  text-transform: uppercase;
 `;
 
 const PokemonCard = styled.img`
-  height: 200px;
+margin-top: 5px;
+  height: 100px;
   border-radius: 5px;
 `;
 
