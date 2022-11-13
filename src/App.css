@@ -168,3 +168,58 @@ input[type="range"]::-ms-fill-upper {
 background-color: #9a905d;
 }
 
+@media screen and (orientation:portrait) { 
+  /* body{
+    background-color: rgb(55, 255, 0);
+  } */
+  .section{
+    height: 800px;
+  }
+  .panels{
+    height: 60vh;
+  }
+  .screen, .divbtnclass, .divbtnclass2, .card, #infodisplays{
+    transform: translate(0px, 0px);
+    scale: 0.8;
+  }
+  .extrabtns{
+    transform: translate(-15pxpx, 0px);
+    /* scale: 0.8; */
+  }
+  .App{
+    margin:5px;
+  }
+ }
+ 
+@media screen and (orientation:landscape) { 
+  body{
+    background-color: #13bba4;
+  }
+  .panels{
+    height: 80vh;
+  }
+  .screen{
+    transform: translate(0px, -50px);
+    scale: 1.2;
+  }
+  #pokenum{
+    /* transform: translate(0px, 50px); */
+    /* scale: 1.2; */
+    font-size: 25px;
+  }
+  #topdisplay2{
+    transform: translate(0px, -50px);
+    scale: 1.2;
+    font-size: 2em;
+  }
+  .divbtnclass, .divbtnclass2, .extrabtns, .card, .infodisplays{
+    transform: translate(0px, px);
+    margin-bottom: 25px;
+    scale: 1.2;
+    font-size: 2em;
+  }
+    
+  }
+
+ 
+

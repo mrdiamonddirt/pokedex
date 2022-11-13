@@ -100,7 +100,7 @@ function App() {
   return (
     <>
     <div className="App">
-      <Section>
+      <Section className="panels">
         {/* <h1>Pokemon</h1> */}
         <Indicator id='indicator'></Indicator>
         <div className="toplights">
@@ -117,7 +117,7 @@ function App() {
         </Screen>
         <Pokenum type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></Pokenum>
       </Section>
-      <Section>
+      <Section className="panels">
         <TopDisplay id="topdisplay2">
         <PokemonName>{pokemonname}</PokemonName>
         <div id='sprites'>
@@ -125,7 +125,7 @@ function App() {
         </div>
         </TopDisplay>
         <div className="divbtnclass">
-        <Dexbtn onClick={() => setpokemonnum(pokemonnum + 100)} >+100</Dexbtn>
+        <Dexbtn className="dexbtn" onClick={() => setpokemonnum(pokemonnum + 100)} >+100</Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 10)} >+10</Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(pokemonnum + 1)}>+1</Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(pokemonnum - 1)}>-1</Dexbtn>
@@ -221,7 +221,7 @@ margin-left: 2%;
 `
 const Section = styled.div`
   background-color: red;
-  height: 80vh;
+  /* height: 80vh; */
   width: 100%;
   display: flex;
   flex-direction: column;
