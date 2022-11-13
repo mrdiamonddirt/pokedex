@@ -122,10 +122,10 @@ function App() {
         <Dexbtn></Dexbtn>
         </div>
         <div className="extrabtns">
-        <Dexbtn style={{backgroundColor: 'white'}}></Dexbtn>
-        <Dexbtn style={{backgroundColor: 'white'}}></Dexbtn>
+        <Dexbtn style={{backgroundColor: 'white', height: '50px'}}><PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard></Dexbtn>
+        <Dexbtn style={{backgroundColor: 'white', height: '50px'}}></Dexbtn>
         </div>
-        <PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard>
+        
       </Section>
     </div>
     <CardSection id="card" onClick={() => hidecard()}>
@@ -266,8 +266,8 @@ const PokemonName = styled.p`
 `;
 
 const PokemonCard = styled.img`
-margin-top: 5px;
-  height: 100px;
+margin-top: 0px;
+  height: 48px;
   border-radius: 5px;
 `;
 
