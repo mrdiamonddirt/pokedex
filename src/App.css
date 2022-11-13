@@ -13,6 +13,11 @@ body{
   src: url('https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573');
 }
 
+#sprites{
+  background-color: black;
+  
+}
+
 .extrabtns{
   display: flex;
   padding-top: 25px;
