@@ -27,7 +27,17 @@ function App() {
     const data = await response.json();
     console.log(`image ${data.data[0].images.large}`);
     setpokecardurl(data.data[0].images.large);
-    // setPokemoncardImg(data.data[0].images.small);
+    document.getElementById("redlight").style.animation = "search1 1s ";
+    document.getElementById("yellowlight").style.animation = "search2 1s ";
+    document.getElementById("greenlight").style.animation = "search3 1s ";
+    document.getElementById("indicator").style.animation = "thinking 2s";
+    setTimeout(() => {
+      document.getElementById("redlight").style.animation = "none";
+    document.getElementById("yellowlight").style.animation = "none";
+    document.getElementById("greenlight").style.animation = "none";
+    document.getElementById("indicator").style.animation = "none";
+
+    }, 2000);// setPokemoncardImg(data.data[0].images.small);
   }
 
   // state for pokemon number as selected by user
@@ -78,11 +88,11 @@ function App() {
     <div className="App">
       <Section>
         {/* <h1>Pokemon</h1> */}
-        <Indicator className="indicator"></Indicator>
+        <Indicator id='indicator'></Indicator>
         <div className="toplights">
-        <Lights style={{backgroundColor: 'red'}}></Lights>
-        <Lights style={{backgroundColor: 'yellow'}}></Lights>
-        <Lights style={{backgroundColor: 'green'}}></Lights>
+        <Lights id="redlight" style={{backgroundColor: 'red'}}></Lights>
+        <Lights id="yellowlight" style={{backgroundColor: 'yellow'}}></Lights>
+        <Lights id="greenlight" style={{backgroundColor: 'green'}}></Lights>
         </div>
         <Screen className="screen"> 
         <PokeIMG>

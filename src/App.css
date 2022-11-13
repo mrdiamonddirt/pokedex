@@ -65,6 +65,54 @@ align-items: center;
   }
 }
 
+@keyframes search1 {
+  0% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: green;
+  }
+  100% {
+    background-color: red;
+  }
+}
+@keyframes search2 {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: green;
+  }
+}
+@keyframes search3 {
+  0% {
+    background-color: green;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: red;
+  }
+}
+@keyframes thinking {
+  0%, 100% {
+    background: radial-gradient(rgba(36, 17, 187, 1), rgba(97, 87, 233, 1));
+    ;
+  }
+  10%,80% {
+    background: radial-gradient(rgb(103, 95, 165), rgb(177, 121, 17));
+  }
+  20%, 90% {
+    background: radial-gradient(rgb(102, 102, 176), rgb(42, 160, 33));
+  }
+  50%{
+    background: radial-gradient(rgb(36, 17, 187), rgba(97, 87, 233, 1));
+  }
+}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   input[type='range'] {
     overflow: hidden;
