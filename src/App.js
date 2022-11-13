@@ -16,6 +16,14 @@ function App() {
     setPokemonname(data.name);
   }
 
+  // get sprite drome this url
+  // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/${pokenum}.gif`
+  async function getPokemonSprite(number) {
+    const response = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/${number}.gif`);
+    const data = await response.json();
+    console.log(data.sprites.front_default);
+  }
+
   // state for pokemon imageurl
   const [pokecardurl, setpokecardurl] = useState();
 
@@ -44,14 +52,20 @@ function App() {
   const [pokemonnum, setpokemonnum] = useState(0);
   // setting the state for pokemon number as selected by user
   getPokemonname(pokemonnum);
-
+  //setting the sprite
+  getPokemonSprite(pokemonnum);
   // variable to store the pokemon image from number
   let imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonnum}.png`;
-
+  let spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/${pokemonnum}.gif`;
+  let latestgamesprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${pokemonnum}.png`;
+  let officialartwork = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonnum}.png`;
+  let sprite1 =  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemonnum}.png`
+  let frontanimsprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemonnum}.gif`
   //variable for data from api
-  let pokeurl = `'https://pokeapi.co/api/v2/pokemon/${pokemonnum}'`;
+  let pokeurl = `https://pokeapi.co/api/v2/pokemon/${pokemonnum}`;
   // console log the url
   console.log(`Pokemon URL ${pokeurl}`);
+  console.log(`Pokemon URL ${spriteUrl}`);
   const [data, setpokemon] = useState();
 
   // useEffect to fetch data from api
@@ -125,7 +139,12 @@ function App() {
         <Dexbtn style={{backgroundColor: 'white', height: '50px'}}><PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard></Dexbtn>
         <Dexbtn style={{backgroundColor: 'white', height: '50px'}}></Dexbtn>
         </div>
-        
+        <div id='infodisplays'>
+        <Info style={{height:'80px'}}><img src={frontanimsprite}></img></Info><Info><img src={officialartwork} alt="pokeimg"></img></Info>
+        </div>
+        <div id='sprites'>
+        <img style={{height:'40px'}} src={spriteUrl}></img><img style={{height:'40px'}} src={latestgamesprite}></img><img style={{height:'40px'}} src={sprite1}></img>
+        </div>
       </Section>
     </div>
     <CardSection id="card" onClick={() => hidecard()}>
@@ -134,6 +153,15 @@ function App() {
     </>
   );
 }
+
+const Info = styled.div`
+display: flex;
+max-height: 80px;
+justify-content: center;
+background-color: black;
+width: 120px;
+height: 100px;
+`
 
 const Lights = styled.div`
 height: 10px;
@@ -150,6 +178,8 @@ height: 40px;
 width: 60px;
 margin-top: 15px;
 transform: translate(-15px);
+text-align: center;
+border-radius: 5px;
 `
 
 const Screen = styled.div`
@@ -164,48 +194,6 @@ const CardSection = styled.div`
 display: none;
 justify-content: center;
 align-items: center;
-`
-
-const Card = styled.img`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  perspective: 200px;
-  top: 0;
-  height: 500px;
-  position: absolute;
-  z-index: 1;
-  transform: translate3d(0.1px, 0.1px, 0.1px ); 
-&:hover {
-  animation-name: 'holoCard';
-  border-radius: 5px;
-  box-shadow: 
-    -20px -20px 30px -25px var(--color1), 
-    20px 20px 30px -25px var(--color2), 
-    -7px -7px 10px -5px var(--color1), 
-    7px 7px 10px -5px var(--color2), 
-    0 0 13px 4px rgba(255,255,255,0.3),
-    0 55px 35px -20px rgba(0, 0, 0, 0.5);
-}
-
-@keyframes holoCard {
-  0%, 100% {
-    transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
-  }
-  5%, 8% {
-    transform: rotateZ(0deg) rotateX(6deg) rotateY(-20deg);
-  }
-  13%, 16% {
-    transform: rotateZ(0deg) rotateX(-9deg) rotateY(32deg);
-  }
-  35%, 38% {
-    transform: rotateZ(3deg) rotateX(12deg) rotateY(20deg);
-  }
-  55% {
-    transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
-  }
-}
 `
 
 const Indicator = styled.div`
@@ -270,5 +258,47 @@ margin-top: 0px;
   height: 48px;
   border-radius: 5px;
 `;
+
+const Card = styled.img`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  perspective: 200px;
+  top: 0;
+  height: 500px;
+  position: absolute;
+  z-index: 1;
+  transform: translate3d(0.1px, 0.1px, 0.1px ); 
+&:hover {
+  animation-name: 'holoCard';
+  border-radius: 5px;
+  box-shadow: 
+    -20px -20px 30px -25px var(--color1), 
+    20px 20px 30px -25px var(--color2), 
+    -7px -7px 10px -5px var(--color1), 
+    7px 7px 10px -5px var(--color2), 
+    0 0 13px 4px rgba(255,255,255,0.3),
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes holoCard {
+  0%, 100% {
+    transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+  }
+  5%, 8% {
+    transform: rotateZ(0deg) rotateX(6deg) rotateY(-20deg);
+  }
+  13%, 16% {
+    transform: rotateZ(0deg) rotateX(-9deg) rotateY(32deg);
+  }
+  35%, 38% {
+    transform: rotateZ(3deg) rotateX(12deg) rotateY(20deg);
+  }
+  55% {
+    transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
+  }
+}
+`
 
 export default App;

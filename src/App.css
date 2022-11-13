@@ -47,6 +47,14 @@ align-items: center;
   border-radius: 5px;
 }
 
+#infodisplays{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  width: 100%;
+  flex-direction: row;
+}
+
 @keyframes holoCard {
   0%, 100% {
     transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
