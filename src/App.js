@@ -119,7 +119,7 @@ function App() {
   return (
     <>
     <div className="App">
-      <Section className="panels">
+      <Section id="section1" className="panels">
         {/* <h1>Pokemon</h1> */}
         <Indicator id='indicator'></Indicator>
         <div className="toplights">
@@ -132,16 +132,16 @@ function App() {
           <img src={imgUrl} alt="pokeimg"></img>
         </PokeIMG>
         {/* input type range  with value from 0 to 905*/}
-        <input type="range" min="0" max="905" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
+        <input style={{width: '15vw'}} type="range" min="0" max="905" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
         </Screen>
         <Pokenum type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></Pokenum>
         <Info style={{}}><p style={{color: 'white'}}>
           {pokemongames}
           </p></Info>
       </Section>
-      <Section className="panels">
+      <Section id="section2" className="panels">
         <TopDisplay id="topdisplay2">
-        <PokemonName>{pokemonname}</PokemonName>
+        <PokemonName className="name">{pokemonname}</PokemonName>
         <div id='sprites'>
         <img style={{height:'40px'}} src={spriteUrl}></img><img style={{height:'40px'}} src={latestgamesprite}></img><img style={{height:'40px'}} src={sprite1}></img>
         </div>
@@ -163,8 +163,8 @@ function App() {
         <Dexbtn></Dexbtn>
         </div>
         <div className="extrabtns">
-        <Dexbtn style={{backgroundColor: 'white', height: '50px'}}><PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard></Dexbtn>
-        <Dexbtn style={{backgroundColor: 'white', height: '50px'}}></Dexbtn>
+        <Dexbtn style={{backgroundColor: 'white', height: '10vh'}}><PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard></Dexbtn>
+        <Dexbtn style={{backgroundColor: 'white', height: '10vh'}}></Dexbtn>
         <label>
           <select name="pokemongames" id="pokemongames">
             <option value="games">Games</option>
@@ -186,12 +186,17 @@ function App() {
 
 
 const TopDisplay = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
 background-color: rgba(0, 0, 0, 1);
 border: 1px solid black;
 border-radius: 5px;
+margin-left: 25px;
+margin-right: 25px;
 margin-bottom: 5px;
 padding-bottom: 5px;
-/* height: ; */
+height: 20vh;
 `
 
 const Info = styled.div`
@@ -210,13 +215,12 @@ width: 10px;
 margin: 2px;
 border-radius: 50%;
 border: 2px solid black;
-transform: translate(-50px);
 `;
 
 const Pokenum = styled.input`
 background-color: green;
 height: 40px;
-width: 60px;
+width: 15vw;
 margin-top: 15px;
 transform: translate(-15px);
 text-align: center;
@@ -229,6 +233,8 @@ const Screen = styled.div`
   background-color: #f5f5f5;
   border-radius: 5px 5px 5px 25px;
   padding-bottom: 15px;
+  width: 30vw;
+  height: 30vh;
 `
 
 const CardSection = styled.div`
@@ -243,17 +249,19 @@ height: 50px;
 width: 50px;
 border-radius: 50%;
 position: absolute;
-top: 5%;
-left: 20%;
 border: 5px solid white;
 margin-top: 2%;
 margin-left: 2%;
+top 60px;
+left: 10%;
 `
 const Section = styled.div`
   background-color: red;
-  /* height: 80vh; */
-  width: 100%;
+  margin-top: 0;
+  height: 80vh;
+  width: 50vw;
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -262,12 +270,14 @@ const Section = styled.div`
 `;
 
 const PokeIMG = styled.div`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 5px;
   background-color: black;
   margin: 20px;
-  height: 100px;
-  width: 150px;
+  height: 25vh;
+  width: 25vw;
 `;
 
 const Dexbtn = styled.button`
@@ -275,7 +285,6 @@ const Dexbtn = styled.button`
   background: blue;
   width: 40px;
   height: 40px;
-  margin: 0;
   border: 1px solid black;
 padding: 0;
 &:hover {
@@ -289,7 +298,7 @@ const PokemonName = styled.p`
   align-items: center;
   font-size: 25px;
   background-color: rgba(39, 39, 39, 1);
-  width: 200px;
+  width: 40vw;
   height: 50px;
   border: 1px solid black;
   border-radius: 10px;
@@ -308,9 +317,9 @@ const Card = styled.img`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  perspective: 200px;
+  justify-content: center;
   top: 0;
+  left: 20vw;
   height: 500px;
   position: absolute;
   z-index: 1;

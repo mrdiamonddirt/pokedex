@@ -3,10 +3,17 @@
   --color2: rgb(255, 0, 231);
   --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
 }
-
+#root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body{
   background-color: grey;
+  height: 100vh;
+  width: 100vw;
 }
+
 
 @font-face {
   font-family: 'Pokemon Solid', sans-serif;;
@@ -29,18 +36,22 @@ body{
 .App {
   display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   font-family: 'Pokemon Solid';
-  margin-top: 2%;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-bottom: 5%;
+  width: 80vw;
+  height: 100vh;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }
 .toplights{
   display: flex;
   justify-items: space-between;
   align-items: center;
   position: fixed;
-  top: 10%;
+  top: 12%;
 }
 
 .divbtnclass, .divbtnclass2{
@@ -169,25 +180,8 @@ background-color: #9a905d;
 }
 
 @media screen and (orientation:portrait) { 
-  /* body{
+  body{
     background-color: rgb(55, 255, 0);
-  } */
-  .section{
-    height: 800px;
-  }
-  .panels{
-    height: 60vh;
-  }
-  .screen, .divbtnclass, .divbtnclass2, .card, #infodisplays{
-    transform: translate(0px, 0px);
-    scale: 0.8;
-  }
-  .extrabtns{
-    transform: translate(-15pxpx, 0px);
-    /* scale: 0.8; */
-  }
-  .App{
-    margin:5px;
   }
  }
  
@@ -195,31 +189,32 @@ background-color: #9a905d;
   body{
     background-color: #13bba4;
   }
+}
+/* min screen width media query */
+@media screen and (max-width: 390px) {
+  body{
+    background-color: #21bb13;
+  }
+  .App{
+    /* scale: 0.95; */
+  }
   .panels{
-    height: 80vh;
   }
-  .screen{
-    transform: translate(0px, 0px);
-    scale: 1;
+  #section1{
+    width: 100vw;
+    padding-left: 5px;
+    padding-right: 5px;
   }
-  #pokenum{
-    /* transform: translate(0px, 50px); */
-    /* scale: 1.2; */
-    font-size: 25px;
+  #section2{
+    width: 50vw;
   }
   #topdisplay2{
-    /* transform: translate(0px, -50px); */
-    /* scale: 1; */
-    font-size: 2em;
+    width: 40vw;
   }
-  .divbtnclass, .divbtnclass2, .extrabtns, .card, .infodisplays{
-    /* transform: translate(0px, px); */
-    /* margin-bottom: 25px; */
-    /* scale: 1.2; */
-    font-size: 2em;
+  .name{
+    height: 15px;
   }
-    
+  .divbtnclass, .divbtnclass2, .extrabtns{
+    scale: 0.7;
   }
-
- 
-
+}
