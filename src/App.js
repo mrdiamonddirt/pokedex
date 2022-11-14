@@ -4,22 +4,42 @@ import { useEffect, useState } from "react";
 
 // main function
 function App() {
-
+  
   // state for pokemon name
   const [pokemonname, setPokemonname] = useState(null);
-
+  const [pokemongames, setPokemongames] = useState(null);
   // state for pokemon number as selected by user
   async function getPokemonname(number) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`);
     const data = await response.json();
-    console.log(data.name);
+    console.log(`Data.name = ${data.name}`);
+    console.log(`Data.game_indices = ${data.game_indices}`);
+    console.log(data.name)
+    // get games the pokemon is in and loop through loggoing each
+    if (data.game_indices) {
+      data.game_indices.forEach((game) => {
+        console.log(`Game: ${game.version.name}`);
+      });
+    }
+    let gamestring = data.game_indices.map((game) => {
+      return game.version.name
+    })
+    console.log(gamestring)
+    let gamestring2 = gamestring.join(", ")
+    setPokemongames(gamestring2)
+    
+    // let games = data.game_indices.map((game) => game.version.name);
+    // setPokemongames(games);
+    console.log(`Pokemon games: ${pokemongames}`);
     setPokemonname(data.name);
   }
+
+
 
   // get sprite drome this url
   // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/${pokenum}.gif`
   async function getPokemonSprite(number) {
-    const response = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/${number}.gif`);
+    const response = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${number}.gif`);
     const data = await response.json();
     console.log(data.sprites.front_default);
   }
@@ -49,14 +69,14 @@ function App() {
   }
 
   // state for pokemon number as selected by user
-  const [pokemonnum, setpokemonnum] = useState(0);
+  const [pokemonnum, setpokemonnum] = useState(1);
   // setting the state for pokemon number as selected by user
   getPokemonname(pokemonnum);
   //setting the sprite
   getPokemonSprite(pokemonnum);
   // variable to store the pokemon image from number
   let imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonnum}.png`;
-  let spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/shiny/${pokemonnum}.gif`;
+  let spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${pokemonnum}.gif`;
   let latestgamesprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${pokemonnum}.png`;
   let officialartwork = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonnum}.png`;
   let sprite1 =  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemonnum}.png`
@@ -96,7 +116,6 @@ function App() {
     document.getElementById("card").style.display = "none";
   }
 
-  
   return (
     <>
     <div className="App">
@@ -116,6 +135,9 @@ function App() {
         <input type="range" min="0" max="905" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></input>
         </Screen>
         <Pokenum type="number" id="pokenum"  placeholder="Pokenumber" value={pokemonnum} onChange={(e) => setpokemonnum(e.target.value)}></Pokenum>
+        <Info style={{}}><p style={{color: 'white'}}>
+          {pokemongames}
+          </p></Info>
       </Section>
       <Section className="panels">
         <TopDisplay id="topdisplay2">
@@ -137,12 +159,18 @@ function App() {
         <Dexbtn></Dexbtn>
         <Dexbtn onClick={() => setpokemonnum(Math.floor(Math.random() * 905))}>Rdmn Poké</Dexbtn>
         <Dexbtn onClick={() => getPokemoncardImg(pokemonname)}>Get Card</Dexbtn>
-        <Dexbtn></Dexbtn>
+        <Dexbtn onClick={() => getPokemonname(pokemonnum)} style={{fontSize: '10px'}}>Games</Dexbtn>
         <Dexbtn></Dexbtn>
         </div>
         <div className="extrabtns">
         <Dexbtn style={{backgroundColor: 'white', height: '50px'}}><PokemonCard onClick={() => showcard()} src={pokecardurl}></PokemonCard></Dexbtn>
         <Dexbtn style={{backgroundColor: 'white', height: '50px'}}></Dexbtn>
+        <label>
+          <select name="pokemongames" id="pokemongames">
+            <option value="games">Games</option>
+            {/* map through pokemongames usestate and create options in dropdown for each */}
+          </select>
+        </label>
         </div>
         <div id='infodisplays'>
         <Info style={{height:'80px'}}><img src={frontanimsprite}></img></Info><Info><img src={officialartwork} alt="pokeimg"></img></Info>
@@ -155,6 +183,7 @@ function App() {
     </>
   );
 }
+
 
 const TopDisplay = styled.div`
 background-color: rgba(0, 0, 0, 1);
@@ -172,6 +201,7 @@ justify-content: center;
 background-color: black;
 width: 120px;
 height: 100px;
+overflow: auto;
 `
 
 const Lights = styled.div`
@@ -248,6 +278,9 @@ const Dexbtn = styled.button`
   margin: 0;
   border: 1px solid black;
 padding: 0;
+&:hover {
+  background: lightblue;
+}
 `;
 
 const PokemonName = styled.p`
