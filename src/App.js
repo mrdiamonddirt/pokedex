@@ -8,6 +8,7 @@ function App() {
   // state for pokemon name
   const [pokemonname, setPokemonname] = useState(null);
   const [pokemongames, setPokemongames] = useState(null);
+  const [pokedata, setPokedata] = useState(null);
   // state for pokemon number as selected by user
   async function getPokemonname(number) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`);
@@ -15,6 +16,7 @@ function App() {
     console.log(`Data.name = ${data.name}`);
     console.log(`Data.game_indices = ${data.game_indices}`);
     console.log(data.name)
+   
     // get games the pokemon is in and loop through loggoing each
     if (data.game_indices) {
       data.game_indices.forEach((game) => {
@@ -25,7 +27,9 @@ function App() {
       return game.version.name
     })
     console.log(gamestring)
+    console.log(`pokedata = ${pokedata}`);
     let gamestring2 = gamestring.join(", ")
+    //  setPokedata(data);
     setPokemongames(gamestring2)
     
     // let games = data.game_indices.map((game) => game.version.name);
@@ -98,7 +102,7 @@ function App() {
     console.log(data);
     setpokemon(data);
     return () => {};
-  }, [setpokemon]);
+  }, []);
 
   // console log of the pokemon name
   console.log(`Pokemon Name ${pokemonname}`);
