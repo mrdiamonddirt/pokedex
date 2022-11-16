@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import {PokemonCard} from "./Styles";
 import Modal from "./Modal";
+import ImageContainer from "./PokemonImageSlider";
 
 const Pokemon = ({name, url}) => {
     const [pokemonData, setPokemonData] = useState([]);
@@ -47,7 +48,7 @@ const Pokemon = ({name, url}) => {
                 setPokemonSelected(id)
             }}>
                 <div>
-                    {getImage(sprites)}
+                <ImageContainer imgs={sprites} />
                     <p>Name{name}</p>
                     <p>ID {id}</p>
                     <p>Height {height}</p>

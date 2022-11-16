@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ModalComponent = styled.div`
-display: none;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
