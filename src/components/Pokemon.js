@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
-import {PokemonCard, Modal} from "./Styles";
+import {PokemonCard} from "./Styles";
+import Modal from "./Modal";
 
 const Pokemon = ({name, url}) => {
     const [pokemonData, setPokemonData] = useState([]);
@@ -23,7 +24,6 @@ const Pokemon = ({name, url}) => {
 
     // Log keys of pokemonData
     // console.log(Object.keys(pokemonData));
-
     const {id, height, weight, sprites} = pokemonData;
 
     const getImage = (sprites) => {
@@ -35,24 +35,13 @@ const Pokemon = ({name, url}) => {
         return <img src={sprites['front_default']} alt={name} />
     }
 
-    const renderModalWhenPokemonSelected = () => {
-        console.log(`Selected Pokemon with id ${id}`)
-        if (!pokemonSelected) return null;
-
-        return (
-            <Modal>
-                {getImage(sprites)}
-                <li>Name: {name}</li>
-                <li>ID: {id}</li>
-                <li>Height: {height}</li>
-                <li>Weight: {weight}</li>
-            </Modal>
-        )
-    }
-
     return (
         <>
-            {renderModalWhenPokemonSelected()}
+            <Modal onClose={() => {
+                console.log('close')
+            }}>
+                hello
+            </Modal>
             <PokemonCard onClick={(id) => {
                 setPokemonSelected(false)
                 setPokemonSelected(id)

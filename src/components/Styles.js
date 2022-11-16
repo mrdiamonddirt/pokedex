@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ReactComponent as PokemonLogo} from '../images/mainLogo.svg';
 
 export const PokemonCard = styled.div`
     border: .25rem solid lightgrey;
@@ -9,13 +10,12 @@ export const PokemonCard = styled.div`
     text-transform: capitalize;
 `;
 
+export const Logo = styled(PokemonLogo)`
+    width: 100px;
+`
 
-export const Modal = styled.div`
-    background: green;
-    width: 50%;
-    height: 500px;
-    position: fixed;
-    
+export const Logo = styled(PokemonLogo)`
+    width: 100px;
 `
 
 // export const TopDisplay = styled.div`
