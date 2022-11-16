@@ -14,9 +14,7 @@ export const Logo = styled(PokemonLogo)`
     width: 100px;
 `
 
-export const Logo = styled(PokemonLogo)`
-    width: 100px;
-`
+
 
 // export const TopDisplay = styled.div`
 //   display: flex;
