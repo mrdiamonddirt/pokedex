@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
+import { showmodal } from './Modal';
+
 function ImageContainer({imgs}) {
 
   const [selectedImgIndex,setSelectedImgIndex] = useState(0);
@@ -17,13 +19,14 @@ function ImageContainer({imgs}) {
     } 
     return flag
   },[]);
+
   let allImgs = reducedImgs2.concat(reducedImgs);
   // .other["official-artwork"]
   // console.log(allImgs)
 
 
   return (
-    <PokemonImage>
+    <PokemonImage >
       <ImageArrow left={true}
       onClick={()=>{
         if (selectedImgIndex !== 0) {
@@ -31,7 +34,7 @@ function ImageContainer({imgs}) {
         }
       }} />
 
-      <ImgContainer>
+      <ImgContainer onClick={() => console.log('show modal')}>
         <img src={allImgs[selectedImgIndex]} alt="" width="120px" height="120px"/>
       </ImgContainer>
 

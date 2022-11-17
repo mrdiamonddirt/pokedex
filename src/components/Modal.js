@@ -3,17 +3,26 @@ import styled from 'styled-components';
 
 const ModalComponent = styled.div`
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 400px;
-    height: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    width: 50vw;
+    height: 50vh;
+    z-index: 99;
 `
+// export function showmodal() {
+//     document.getElementById("Modal").style.display = "flex";
+// }
+
+export function hidemodal() {
+    document.getElementById("Modal").style.display = "none";
+}
 
 const Modal = ({isActive, onClose, children}) => {
 
     return (
-        <ModalComponent>
+        <ModalComponent id='Modal'>
             <button onClick={() => onClose()}>Close</button>
             {children}
         </ModalComponent>

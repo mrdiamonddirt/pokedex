@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {ReactComponent as PokemonLogo} from '../images/mainLogo.svg';
+import Pagination from "./Pagination";
 
 export const PokemonCard = styled.div`
     border: .25rem solid lightgrey;
@@ -11,9 +12,21 @@ export const PokemonCard = styled.div`
 `;
 
 export const Logo = styled(PokemonLogo)`
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
     width: 100px;
 `
 
+export const HeaderContainer = styled.div`
+display: flex;
+width: 100%;
+position: fixed;
+background-color: lightblue;
+`
+export const PaginationContainer = styled.div`
+padding-top: 40px;
+`
 
 
 // export const TopDisplay = styled.div`

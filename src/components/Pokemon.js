@@ -3,6 +3,7 @@ import React, { useEffect, useState, version } from "react";
 import {PokemonCard} from "./Styles";
 import Modal from "./Modal";
 import ImageContainer from "./PokemonImageSlider";
+import { hidemodal } from "./Modal";
 
 const Pokemon = ({name, url}) => {
     const [pokemonData, setPokemonData] = useState([]);
@@ -41,9 +42,11 @@ const Pokemon = ({name, url}) => {
     return (
         <>
             <Modal onClose={() => {
-                console.log('close')
+                hidemodal()
             }}>
-                hello
+                <p>Name: {name}</p>
+                <p>Height: {height}</p>
+                <p>Weight: {weight}</p>
             </Modal>
             <PokemonCard onClick={(id) => {
                 setPokemonSelected(false)
@@ -58,6 +61,7 @@ const Pokemon = ({name, url}) => {
                     <p>Weight {weight}</p>
                 </div>
             </PokemonCard>
+            
         </>
     )
 }
