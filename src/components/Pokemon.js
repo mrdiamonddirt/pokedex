@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, version } from "react";
 import {PokemonCard} from "./Styles";
 import Modal from "./Modal";
 import ImageContainer from "./PokemonImageSlider";
@@ -25,8 +25,10 @@ const Pokemon = ({name, url}) => {
 
     // Log keys of pokemonData
     // console.log(Object.keys(pokemonData));
-    const {id, height, weight, sprites} = pokemonData;
-
+    const {id, height, types, weight, sprites} = pokemonData;
+    // console.log(types[0].type.name);
+    // console.log(sprites.versions)
+    // console.log(sprites.other["official-artwork"].front_default);
     const getImage = (sprites) => {
         // TODO: How do we handle multiple images here?
         if (sprites['front_default'] === 'null') {
@@ -49,7 +51,8 @@ const Pokemon = ({name, url}) => {
             }}>
                 <div>
                 <ImageContainer imgs={sprites} />
-                    <p>Name{name}</p>
+                    <p>Name: {name}</p>
+                    <p>Main Type: {types[0].type.name}</p>
                     <p>ID {id}</p>
                     <p>Height {height}</p>
                     <p>Weight {weight}</p>

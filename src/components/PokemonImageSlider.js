@@ -11,6 +11,17 @@ function ImageContainer({imgs}) {
     return flag
   },[]);
 
+  const reducedImgs2 = Object.values(imgs.other["official-artwork"]).reduce((flag,current) => {
+    if (current != null && typeof current === 'string') {
+      flag.push(current)
+    } 
+    return flag
+  },[]);
+  let allImgs = reducedImgs2.concat(reducedImgs);
+  // .other["official-artwork"]
+  // console.log(allImgs)
+
+
   return (
     <PokemonImage>
       <ImageArrow left={true}
@@ -21,11 +32,11 @@ function ImageContainer({imgs}) {
       }} />
 
       <ImgContainer>
-        <img src={reducedImgs[selectedImgIndex]} alt="" width="120px" height="120px"/>
+        <img src={allImgs[selectedImgIndex]} alt="" width="120px" height="120px"/>
       </ImgContainer>
 
       <ImageArrow onClick={()=>{
-        if (selectedImgIndex !== reducedImgs.length-1) {
+        if (selectedImgIndex !== allImgs.length-1) {
           setSelectedImgIndex(selectedImgIndex+1);
         }
       }} />
