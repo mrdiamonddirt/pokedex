@@ -66,7 +66,9 @@ const Pokemon = ({name, url}) => {
                 <div>
                 <ImageContainer imgs={sprites} />
                     <p>Name: {name}</p>
-                    <p>Main Type: {types[0].type.name}</p>
+                    <p>Types: {
+                        types.map((type) => type.type.name).join(", ")
+                    }</p>
                     <p>ID {id}</p>
                     <p>Height {height}</p>
                     <p>Weight {weight}</p>
