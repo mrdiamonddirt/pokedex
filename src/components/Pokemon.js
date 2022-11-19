@@ -27,7 +27,18 @@ const Pokemon = ({name, url}) => {
     // Log keys of pokemonData
     // console.log(Object.keys(pokemonData));
     const {id, height, types, weight, sprites} = pokemonData;
-    // console.log(types[0].type.name);
+    console.table({
+        id: id,
+        name: name,
+        // abilities: abilities,
+        types: types.map((type) => type.type.name),
+        weight: weight,
+        height: height,
+        // sprites: sprites,
+
+    });
+       
+    
     // console.log(sprites.versions)
     // console.log(sprites.other["official-artwork"].front_default);
     const getImage = (sprites) => {
