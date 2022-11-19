@@ -13,6 +13,7 @@ function ImageContainer({imgs}) {
     return flag
   },[]);
 
+  // return all keys and values for imgs.versions within the other sprites object
   const reducedImgs2 = Object.values(imgs.other["official-artwork"]).reduce((flag,current) => {
     if (current != null && typeof current === 'string') {
       flag.push(current)
@@ -20,7 +21,18 @@ function ImageContainer({imgs}) {
     return flag
   },[]);
 
-  let allImgs = reducedImgs2.concat(reducedImgs);
+  // return all keys and values for imgs.versions within the versions object
+  // Object.keys(sprites.versions).map((key) => sprites.versions[key].front_default)
+  const reducedImgs3 = Object.values(imgs.versions).reduce((flag,current) => {
+    if (current != null && typeof current === 'string') {
+      flag.push(current)
+    }
+    return flag
+  },[]);
+  // console.log(reducedImgs3);
+  
+
+  let allImgs = reducedImgs2.concat(reducedImgs).concat(reducedImgs3);
   // .other["official-artwork"]
   // console.log(allImgs)
 
@@ -49,12 +61,15 @@ function ImageContainer({imgs}) {
 }
 
 export const PokemonImage = styled.div`
+  background-color: lightblue;
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    border-radius: 10px;
 `
 export const ImageArrow = styled.div`
+    display: flex;
     cursor: pointer;
     position:relative;
     display:block;

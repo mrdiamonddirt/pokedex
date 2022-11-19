@@ -11,6 +11,24 @@ export const PokemonCard = styled.div`
     text-transform: capitalize;
 `;
 
+export const PokeDetail = styled.p`
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+    border: 1px solid lightgrey;
+`
+
+export const PokeInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    margin: 0 auto;
+    text-align: center;
+    /* text-transform: capitalize; */
+`;
+
+
 export const Logo = styled(PokemonLogo)`
     display: flex;
     margin-left: auto;
@@ -39,6 +57,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
+margin: 5px;
 border: 1px solid black;
 border-radius: 5px;
 background-color: darkgray;
