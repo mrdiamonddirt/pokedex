@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useEffect, useState, version } from "react";
-import {PokemonCard} from "./Styles";
+import {PokemonCard, Pokestats, StatsName, PokeStatsContainer, StatsValue} from "./Styles";
 import Modal from "./Modal";
 import ImageContainer from "./PokemonImageSlider";
 import { hidemodal } from "./Modal";
@@ -26,17 +26,23 @@ const Pokemon = ({name, url}) => {
 
     // Log keys of pokemonData
     // console.log(Object.keys(pokemonData));
-    const {id, height, types, weight, sprites} = pokemonData;
+    const {id, height, types,abilities ,stats, weight, sprites} = pokemonData;
     console.table({
         id: id,
         name: name,
         // abilities: abilities,
-        types: types.map((type) => type.type.name),
+        types: Object.keys(types).map((key) => types[key].type.name),
+        abilities: Object.keys(abilities).map((ability) => abilities[ability].ability.name),
+
         weight: weight,
         height: height,
         // sprites: sprites,
 
     });
+    console.table({
+        stats: Object.keys(stats).map((stat) => stats[stat].stat.name),
+        base_stat: Object.keys(stats).map((stat) => stats[stat].base_stat),
+        });
        
     
     // console.log(sprites.versions)
@@ -67,8 +73,25 @@ const Pokemon = ({name, url}) => {
                 <ImageContainer imgs={sprites} />
                     <p>Name: {name}</p>
                     <p>Types: {
-                        types.map((type) => type.type.name).join(", ")
-                    }</p>
+                        Object.keys(types).map((key) => types[key].type.name).join(', ')
+                    }
+                    </p>
+                    {/* for each stat return the key and the value of the object and put each on a new line*/}
+                    <PokeStatsContainer>
+                    {Object.keys(stats).map((stat) => (
+                        
+                        <Pokestats>
+                        <StatsName>{stats[stat].stat.name}</StatsName>
+                        <StatsValue>{stats[stat].base_stat}</StatsValue>
+                        </Pokestats>
+                        
+                    ))}
+                    </PokeStatsContainer>   
+                    {/* map through abilities and return abilites */}
+                    <p>Abilities: {
+                        abilities.map((ability) => ability.ability.name).join(", ")
+                        }</p>
+                    
                     <p>ID {id}</p>
                     <p>Height {height}</p>
                     <p>Weight {weight}</p>

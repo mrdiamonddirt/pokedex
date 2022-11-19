@@ -27,7 +27,35 @@ background-color: lightblue;
 export const PaginationContainer = styled.div`
 padding-top: 40px;
 `
+export const PokeStatsContainer = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+`
 
+export const Pokestats = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: center;
+border: 1px solid black;
+border-radius: 5px;
+background-color: darkgray;
+`
+export const StatsName = styled.div`
+display: flex;;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+background-color: darkblue;
+padding: 0px 5px 0px 5px;
+color: white;
+`
+
+export const StatsValue = styled.div`
+color: white;
+`
 
 // export const TopDisplay = styled.div`
 //   display: flex;
